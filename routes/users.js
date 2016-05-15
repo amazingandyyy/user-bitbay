@@ -24,17 +24,22 @@ router.post('/register', (req, res) => {
 });
 router.post('/:id/post', (req, res) => {
     var userId = req.params.id;
-    var body = req.body.body;
-    console.log('body: ', req.body.body);
+    var postObj = req.body;
+    console.log('postObj: ', req.body);
     console.log('user: ', req.params);
-    var postObj = {
+    var postDetails = {
         user: userId,
-        body: body
+        name: postObj.name,
+        description: postObj.description,
+        image: postObj.image,
+        price: postObj.price,
+        deadline: postObj.deadline
+
     }
-    console.log('postObj: ', postObj);
-    Post.post(postObj, (err, post)  => {
-        res.status(err ? 400 : 200).send(err || post);
-    });
+    console.log('postDetails: ', postDetails);
+    // Post.post(postInfo, (err, post)  => {
+    //     res.status(err ? 400 : 200).send(err || post);
+    // });
 });
 router.put('/:userId/like/:postId', (req, res) => {
     var userId = req.params.userId;

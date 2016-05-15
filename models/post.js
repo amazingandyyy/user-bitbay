@@ -6,17 +6,25 @@ var jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
 
 var postSchema = new mongoose.Schema({
-    body: {
+    name: {
+        type: String
+    },
+    description: {
+        type: String
+    },
+    image: {
+        type: String
+    },
+    price: {
+        type: String
+    },
+    deadline: {
         type: String
     },
     time: {
         type: Date,
         default: Date.now
     },
-    likes: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }],
     user: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'

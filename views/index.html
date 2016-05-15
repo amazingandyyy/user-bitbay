@@ -2,9 +2,10 @@
 <html>
 
 <head>
-    <title>myProfile</title>
+    <title>Bitbay</title>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.min.css">
+    <!-- <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
     <link rel="shortcut icon" type="image/png" href="../css/favicon.png"/>
@@ -17,12 +18,12 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
-                    <span class="sr-only">myProfile</span>
+                    <span class="sr-only">Bitbay</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" ui-sref="home"><span><img src="../css/logo.svg" style="height: 35px;"></span> myProfile</a>
+                <a class="navbar-brand" ui-sref="home"><span><img src="../css/logo.svg" style="height: 35px;"></span> Bitbay</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,7 +32,7 @@
                     <li><a ui-sref="community">Community</a></li>
                 </ul> -->
                 <ul class="nav navbar-nav" ng-show="currentUser">
-                    <li><a ui-sref="wall">Wall</a></li>
+                    <li><a ui-sref="wall">Market</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right" ng-hide="currentUser">
                     <form class="navbar-form" ng-submit="logIn(loginInfo)">

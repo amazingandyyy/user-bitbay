@@ -49,11 +49,11 @@ app.service('User', function($http) {
 });
 
 app.service('Post', function($http) {
-    this.post = (userId, body) => {
+    this.post = (userId, postObj) => {
         return $http({
             method: 'POST',
             url: `/api/users/${userId}/post`,
-            data: {body: body}
+            data: postObj
         });
     }
     this.like = (userId, postId) => {

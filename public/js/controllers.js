@@ -110,9 +110,9 @@ app.controller('wallCtrl', function($http, $scope, Auth, User, Post) {
     $scope.postSubmit = () => {
         console.log('post');
         var userId = $scope.currentUser._id;
-        var body = $scope.post.body;
-        console.log(userId, body);
-        Post.post(userId, body).then(function(res) {
+        var postObj = $scope.post;
+        console.log(userId, postObj);
+        Post.post(userId, postObj).then(function(res) {
             console.log(res.data);
             $scope.posts.unshift(res.data);
             $scope.post = null;
