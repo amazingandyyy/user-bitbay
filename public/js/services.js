@@ -56,10 +56,27 @@ app.service('Post', function($http) {
             data: postObj
         });
     }
+    this.getOne = (id) => {
+        return $http({
+            method: 'GET',
+            url: `/api/post/${id}`
+        });
+    }
     this.like = (userId, postId) => {
         return $http({
             method: 'PUT',
             url: `/api/users/${userId}/like/${postId}`
+        });
+    }
+    this.bitted = (userId, bitVlue, itemId) => {
+        return $http({
+            method: 'PUT',
+            url: `/api/post/bit`,
+            data:{
+                userId: userId,
+                bitVlue: bitVlue,
+                itemId: itemId
+            }
         });
     }
 });

@@ -108,10 +108,10 @@ app.controller('wallCtrl', function($http, $scope, Auth, User, Post) {
     })
 
     $scope.postSubmit = () => {
-        console.log('post');
+        console.log('post!');
         var userId = $scope.currentUser._id;
         var postObj = $scope.post;
-        console.log(userId, postObj);
+        console.log(userId, 'posts', postObj);
         Post.post(userId, postObj).then(function(res) {
             console.log(res.data);
             $scope.posts.unshift(res.data);
@@ -122,7 +122,6 @@ app.controller('wallCtrl', function($http, $scope, Auth, User, Post) {
 
     }
     $scope.like = (post) => {
-
         var userId = $scope.currentUser._id;
         var postId = post._id;
         console.log(userId, postId);
@@ -150,5 +149,29 @@ app.controller('wallCtrl', function($http, $scope, Auth, User, Post) {
         } else {
             post.likes.splice(index, 1);
         }
+    }
+});
+
+app.controller('itemCtrl', function($http, $scope, $stateParams, User, Post) {
+    console.log('itemCtrl loaded');
+    console.log($stateParams);
+    console.log($stateParams.id);
+    Post.getOne($stateParams.id).then(function(res) {
+        console.log(res);
+        $scope.post = res.data;
+    }, function(err) {
+        console.log('user is not logged in.');
+    })
+    $scope.bitForm = (id)=>{
+        var userId = $scope.currentUser._id;
+        var bitVlue = Number($scope.post.price)+Number($scope.addValue);
+        var itemId = id;
+        Post.bitted(userId, bitVlue, itemId).then(function(res) {
+            console.log(res);
+            $scope.post.price = res.data.price;
+            $scope.addValue = null;
+        }, function(err) {
+            console.log('user is not logged in.');
+        })
     }
 });

@@ -16,7 +16,7 @@ var postSchema = new mongoose.Schema({
         type: String
     },
     price: {
-        type: String
+        type: Number
     },
     deadline: {
         type: String
@@ -28,11 +28,16 @@ var postSchema = new mongoose.Schema({
     user: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
+    }],
+    highiestUser:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }]
 });
 
-postSchema.statics.post = function(postObj, cb) {
-    this.create(postObj, (err, post) => {
+postSchema.statics.post = function(postDetails, cb) {
+    console.log('postDetails: ', postDetails);
+    this.create(postDetails, (err, post) => {
         if (err) return cb(err);
         cb(null, post);
     });

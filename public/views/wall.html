@@ -14,7 +14,7 @@
         <br>
         <input type="number" class="form-control" placeholder="starting price" ng-model="post.price">
         <br>
-        <input type="date" class="form-control" placeholder="Deadline" ng-model="post.deadline">
+        <input type="datetime-local" min="2016-05-14" class="form-control" placeholder="Deadline" ng-model="post.deadline">
         <br>
         <button type="submit" class="btn btn-primary btn-xs">
             Post it to market
@@ -23,20 +23,27 @@
     <br>
 </div>
 <!-- <h4>{{(users | filter: searchFilter).length}} users found</h4> -->
-<div class="col-sm-10" ng-repeat="post in posts">
-    <div class="list-group" style="cursor: pointer;">
+<div class="col-sm-6 col-md-3" ng-repeat="post in posts">
+    <div class="card" style="cursor: pointer;">
+        <div class="imgContainer">
+            <img class="card-img-top" src="{{post.image}}" style="max-width: 200px">
+        </div>
+        <div class="card-block">
+            <h3>{{post.name}}</h3>
+            <p >{{post.description}}</p>
+            <h4 >{{post.price | currency : $}}</h4>
+            <h4 >{{post.deadline | date : 'MMM-dd HH:mm:ss'}}</h4>
+            <a ui-sref="item({id: post._id})" class="btn btn-primary">Go details</a>
+        </div>
+    </div>
+    <!-- <div class="list-group" >
         <span href="#" class="list-group-item">
-            <h5 class="list-group-item-text" ng-if="!post.user[0].username"><i class="fa fa-user"></i> {{currentUser.username}} said:</h5>
-            <h5 class="list-group-item-text" ng-if="post.user[0].username"><i class="fa fa-user"></i> {{post.user[0].username}} said: </h5>
-
-            <h3 class="list-group-item-text"><img src="{{post.image}}"></h3>
-            <h3 class="list-group-item-text">{{post.name}}</h3>
-            <h5 class="list-group-item-text">{{post.description}}</h5>
-            <h5 class="list-group-item-text">{{post.price}}</h5>
-            <h3 class="list-group-item-text">{{post.deadline | date : 'MMM-dd HH:mm:ss'}}</h3>
+            <h5 class="list-group-item-text"></h5>
+            <h5 class="list-group-item-text"></h5>
+            <h3 class="list-group-item-text"></h3>
             <h5 class="list-group-item-text">@ {{post.time | date : 'MMM-dd HH:mm:ss'}}</h5>
             <br>
-        <!-- <span class="btn btn-xs like" ng-click="like(post)">
+            <span class="btn btn-xs like" ng-click="like(post)">
             <span ng-if="post.likes.indexOf(currentUser._id)==-1 || post.thumbUp == false">
                 <span>{{post.likes.length}}</span>
         <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
@@ -45,7 +52,7 @@
                 <span>{{post.likes.length}}</span>
         <i class="fa fa-thumbs-up" aria-hidden="true"></i>
         </span>
-        </span> -->
         </span>
-    </div>
+        </span>
+    </div> -->
 </div>

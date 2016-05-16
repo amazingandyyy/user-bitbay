@@ -3,6 +3,7 @@ var router = express.Router();
 
 var User = require('../models/user');
 var Post = require('../models/post');
+var moment = require('moment');
 
 router.get('/', (req, res) => {
     User.find({}, (err, users) => {
@@ -25,21 +26,23 @@ router.post('/register', (req, res) => {
 router.post('/:id/post', (req, res) => {
     var userId = req.params.id;
     var postObj = req.body;
-    console.log('postObj: ', req.body);
-    console.log('user: ', req.params);
+    // console.log('postObj: ', req.body);
+    // console.log('user: ', req.params);
+    var deadline = moment();
+    var deadlineM = deadline.valueOf(postObj.deadline);
+    console.log('deadlineM: ', deadlineM);
     var postDetails = {
         user: userId,
         name: postObj.name,
         description: postObj.description,
         image: postObj.image,
         price: postObj.price,
-        deadline: postObj.deadline
-
+        deadline: deadlineM
     }
     console.log('postDetails: ', postDetails);
-    // Post.post(postInfo, (err, post)  => {
-    //     res.status(err ? 400 : 200).send(err || post);
-    // });
+    Post.post(postDetails, (err, postDetails)  => {
+        res.status(err ? 400 : 200).send(err || postDetails);
+    });
 });
 router.put('/:userId/like/:postId', (req, res) => {
     var userId = req.params.userId;

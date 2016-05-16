@@ -32,6 +32,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '../views/wall.html',
             controller: 'wallCtrl'
         })
+        .state('item', {
+            url: '/item:id',
+            templateUrl: '../views/item.html',
+            controller: 'itemCtrl'
+        })
 
     $urlRouterProvider.otherwise('home');
 
