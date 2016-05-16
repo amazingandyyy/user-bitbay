@@ -46,6 +46,12 @@ app.service('User', function($http) {
             data: userObj
         });
     }
+    this.getOne = (id) => {
+        return $http({
+            method: 'GET',
+            url: `/api/users/${id}`
+        });
+    }
 });
 
 app.service('Post', function($http) {

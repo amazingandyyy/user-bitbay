@@ -55,3 +55,6 @@ button.btn, button.btn:focus{
     transform: scale(1.3);
     transition: .1s all ease-in-out;
 }
+.card-img-top {
+    margin: auto;
+}

@@ -138,11 +138,12 @@ app.controller('wallCtrl', function($http, $scope, Auth, User, Post) {
         var userId = $scope.currentUser._id;
         if (likes.indexOf(userId) == -1) {
             return false;
-        } else if(likes.indexOf(userId) > -1){
+        } else if (likes.indexOf(userId) > -1) {
             return true;
         }
     };
-    function check(post, userId){
+
+    function check(post, userId) {
         var index = post.likes.indexOf(userId);
         if (index === -1) {
             post.likes.push(userId);
@@ -162,9 +163,9 @@ app.controller('itemCtrl', function($http, $scope, $stateParams, User, Post) {
     }, function(err) {
         console.log('user is not logged in.');
     })
-    $scope.bitForm = (id)=>{
+    $scope.bitForm = (id) => {
         var userId = $scope.currentUser._id;
-        var bitVlue = Number($scope.post.price)+Number($scope.addValue);
+        var bitVlue = Number($scope.post.price) + Number($scope.addValue);
         var itemId = id;
         Post.bitted(userId, bitVlue, itemId).then(function(res) {
             console.log(res);
@@ -174,4 +175,8 @@ app.controller('itemCtrl', function($http, $scope, $stateParams, User, Post) {
             console.log('user is not logged in.');
         })
     }
+    $scope.timeLeft = () => {
+        
+    }
+
 });

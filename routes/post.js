@@ -9,7 +9,7 @@ router.get('/:id', (req, res) => {
     var id = req.params.id;
     Post.findById(id, (err, post) => {
         res.status(err ? 400 : 200).send(err || post);
-    });
+    }).populate('highiestUser');
 });
 router.put('/bit', User.isLoggedIn, (req, res) => {
     // console.log('bitInfo: ', req.body);
